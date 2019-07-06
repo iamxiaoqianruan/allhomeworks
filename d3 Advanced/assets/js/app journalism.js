@@ -1,11 +1,11 @@
-var svgWidth = 900;
-var svgHeight = 500;
+var svgWidth = 1000;
+var svgHeight = 800;
 
 
 var margin = {
   top: 20,
-  right: 40,
-  bottom: 60,
+  right: 20,
+  bottom: 100,
   left: 100
 };
 
@@ -138,12 +138,13 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
 
 //assets/data/
 // Retrieve data from the CSV file and execute everything below
-d3.csv("data.csv", function(err, data) {
-  if (err) throw err;
-
+//d3.csv("assets/data/data.csv", function(err, data) {
+  d3.csv("assets/data/data.csv").then((data)=> {
+  //if (err) throw err;
+console.log(data);
   // parse data
   data.forEach(function(data) {
-    data.abbr = string(data.abbr);
+    //data.abbr = string(data.abbr);
     data.poverty = +data.poverty;
     data.age = +data.age;
     data.income = +data.income;
@@ -230,7 +231,7 @@ d3.csv("data.csv", function(err, data) {
 
 
   var smokesLabel = ylabelsGroup.append("text")
-    .attr("y", 0 - margin.left+20)                    //??????????????????????
+    .attr("y", 0 - margin.left+30)                    //??????????????????????
     .attr("x", 0 - (height / 2))
     .attr("value", "smokes") // value to grab for event listener
     .attr("dy", "1em")
@@ -240,7 +241,7 @@ d3.csv("data.csv", function(err, data) {
 
 
   var healthLabel = ylabelsGroup.append("text")
-    .attr("y", 0 - margin.left+30)                    //??????????????????????
+    .attr("y", 0 - margin.left+50)                    //??????????????????????
     .attr("x", 0 - (height / 2))
     .attr("value", "healthcareLow") // value to grab for event listener
     .attr("dy", "1em")
